@@ -1,7 +1,5 @@
 services:
   nginx:
-    build: .
-    command:
     ports:
       - "80:80"
     environment:
