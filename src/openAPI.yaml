@@ -20,3 +20,50 @@ paths:
             type: integer
             default: 10
           description: Nombre par page
+
+      responses:
+        200:
+          description: OK
+        500:
+          description: Server error
+        400:
+          description: Bad request
+        401:
+          description: Bad auth
+        404:
+          description: Not found
+
+  /school:
+    post:
+      summary: Post
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: formData
+          name: name
+          schema:
+            type: string
+          description: A school's name
+        - in: formData
+          name: address
+          schema:
+            type: string
+          description: A school's address
+      responses:
+        200:
+          description: OK
+        500:
+          description: Server error
+        400:
+          description: Bad request
+        401:
+          description: Bad auth
+        404:
+          description: Not found
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
