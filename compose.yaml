@@ -1,0 +1,19 @@
+services:
+  nginx:
+    build: .
+    command:
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_PORT=80
+    volumes:
+      - ./src:/src
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /src
+          ignore:
+            - node_modules
+        - action: rebuild
+          path: ./src/
