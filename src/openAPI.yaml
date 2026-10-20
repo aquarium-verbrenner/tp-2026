@@ -35,20 +35,15 @@ paths:
 
   /school:
     post:
-      summary: Post
+      summary: Add a school
       security:
         - bearerAuth: []
-      parameters:
-        - in: formData
-          name: name
-          schema:
-            type: string
-          description: Le nom d'une université
-        - in: formData
-          name: address
-          schema:
-            type: string
-          description: L'adresse d'une université
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/school"
       responses:
         200:
           description: OK
@@ -62,16 +57,38 @@ paths:
           description: Not found
           
     put:
-      summary: Put
+      summary: Modify a school
       security:
         - bearerAuth: []
-      parameters:
-        - in: formData
-          name: address
-          schema:
-            type: string
-          description: L'adresse d'une univesrité
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/school"
 
+      responses:
+        200:
+          description: OK
+        500:
+          description: Server error
+        400:
+          description: Bad request
+        401:
+          description: Bad auth
+        404:
+          description: Not found
+
+    delete:
+      summary: Remove a school
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/school"
       responses:
         200:
           description: OK
@@ -90,3 +107,10 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+  schemas:
+    school:
+      type: object
+      properties:
+        nom:
+          type: string
+          example: "ISFATES"
