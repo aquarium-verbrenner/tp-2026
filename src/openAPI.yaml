@@ -43,12 +43,35 @@ paths:
           name: name
           schema:
             type: string
-          description: A school's name
+          description: Le nom d'une université
         - in: formData
           name: address
           schema:
             type: string
-          description: A school's address
+          description: L'adresse d'une université
+      responses:
+        200:
+          description: OK
+        500:
+          description: Server error
+        400:
+          description: Bad request
+        401:
+          description: Bad auth
+        404:
+          description: Not found
+          
+    put:
+      summary: Put
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: formData
+          name: address
+          schema:
+            type: string
+          description: L'adresse d'une univesrité
+
       responses:
         200:
           description: OK
