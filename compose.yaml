@@ -1,17 +1,9 @@
 services:
   nginx:
     ports:
-      - "80:80"
-    environment:
-      - NGINX_PORT=80
-    volumes:
-      - ./src:/src
+      - "8080:80"
+    build: .
     develop:
       watch:
-        - action: sync
-          path: ./src
-          target: /src
-          ignore:
-            - node_modules
         - action: rebuild
-          path: ./src/
+          path: ./src/openAPI.yaml
