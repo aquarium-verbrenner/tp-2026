@@ -1,0 +1,22 @@
+openapi: 3.0.3
+info:
+  title: UnivAPI - OpenAPI 3.0
+  description: API de l'université de Lorraine
+  version: 0.0.1
+paths:
+  /school/{schoolId}:
+    get:
+      summary: Get a school by ID
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Numéro de page
+        - in: query
+          name: per-pages
+          schema:
+            type: integer
+            default: 10
+          description: Nombre par page
