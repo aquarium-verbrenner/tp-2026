@@ -10,4 +10,4 @@ jobs:
       - name: Setup environment
         uses: actions/setup-node@v4
       - name: Run Linting Rules
-        run: exec redocly lint
+        run: exec redocly lint ./src/openAPI.yaml
