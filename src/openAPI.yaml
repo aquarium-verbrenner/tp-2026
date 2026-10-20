@@ -109,8 +109,9 @@ components:
       bearerFormat: JWT
   schemas:
     school:
-      type: object
-      properties:
-        nom:
-          type: string
-          example: "ISFATES"
+      allOf:
+        - type: object
+        - properties:
+            nom:
+              type: string
+              example: "ISFATES"
